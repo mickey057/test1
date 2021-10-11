@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Reseau system Management</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
+</head>
+<body>
+<div class="container">
+<div th:if="${agent.idagent == null}" ><h1 class="text-center"> Agent Register</h1></div>
+<div th:unless="${agent.idagent == null}" ><h1 class="text-center"> Agent Update</h1></div>
+<hr>
+<h2> Save Agent</h2>
+        <form action="#" th:action="@{/agent/save}" th:object="${agent}" method="POST">
+            <input type="hidden" th:field="*{idagent}" th:value="${agent.idagent}" />
+            <input type="text" th:field="*{firstname}" placeholder="firstname Agent" class="form-control mb-4 col-4" required="required">
+            <input type="text" th:field="*{lastname}" placeholder="lastname" class="form-control mb-4 col-4" required="required">
+            <input type="text" th:field="*{numero}" placeholder="numero" class="form-control mb-4 col-4" required="required"> 
+            <input type="text" th:field="*{compte}" placeholder="compte" class="form-control mb-4 col-4" required="required">
+            <input type="text" th:field="*{status}" placeholder="status" class="form-control mb-4 col-4" required="required">
+            <input type="text" th:field="*{date}" placeholder="date" class="form-control mb-4 col-4" required="required">
+            <div class="form-group row">
+            
+            <select th:field="*{operateur}" class="form-control mb-4 col-4" required >
+            <th:block th:each="operateur : ${listOperateurs}">
+            <option th:text="${operateur.operateurname}" th:value="${operateur.idoperateur}" />
+            </th:block>
+            </select>
+            
+            </div>
+            <button type="submit" class="btn btn-info col-2"> Save Agent</button>
+            </form>
+</div>
+
+</body>
+</html>
