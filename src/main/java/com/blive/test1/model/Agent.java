@@ -32,20 +32,21 @@ public class Agent {
 	private String lastname;
 	private String numero;
 	private int compte;
+	private int montant;
 //	@Column(name ="statut")
 	private boolean status;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	@Column(name = "date_creation")
 	private Date date;
+	private int level;
 	
 	@ManyToOne
 	@JoinColumn(name="idoperateur")
 	private Operateur operateur;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name ="idagentprofile")
-	private Agentprofile agentprofile;
+//	@OneToOne(mappedBy ="idagent",cascade = CascadeType.ALL)
+//	private Agentprofile agentprofile;
 	
 	@OneToMany(mappedBy = "agent")
 	public List<Operation> operations;
@@ -60,23 +61,61 @@ public class Agent {
 	public List<Agent> subAgent ;
 	
 //recussive
-	
-	public Agent(String firstname, String lastname, String numero, int compte, boolean status, Date date) {
-		super();
+	@ManyToOne
+	@JoinColumn(name ="superior_agent_id")
+	private Agent superiorAgent;
+	@ManyToOne
+	@JoinColumn(name = "config_id")
+	private Confoper conf;
+
+	public Agent(){}
+
+	public Agent(Long idagent, String firstname, String lastname, String numero, int compte, int montant, boolean status, Date date, int level, Operateur operateur, List<Operation> operations, Agent managerid, List<Agent> subAgent, Agent superiorAgent, Confoper conf) {
+		this.idagent = idagent;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.numero = numero;
 		this.compte = compte;
-		this.status= status;
+		this.montant = montant;
+		this.status = status;
 		this.date = date;
+		this.level = level;
+		this.operateur = operateur;
+		this.operations = operations;
+		this.managerid = managerid;
+		this.subAgent = subAgent;
+		this.superiorAgent = superiorAgent;
+		this.conf = conf;
 	}
 
-	
-	public Agentprofile getAgentprofile() {
-		return agentprofile;
+	//	public Agentprofile getAgentprofile() {
+//		return agentprofile;
+//	}
+
+
+	public Confoper getConf() {
+		return conf;
 	}
 
-	
+	public void setConf(Confoper conf) {
+		this.conf = conf;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public Agent getSuperiorAgent() {
+		return superiorAgent;
+	}
+
+	public void setSuperiorAgent(Agent superiorAgent) {
+		this.superiorAgent = superiorAgent;
+	}
 
 	public Operateur getOperateur() {
 		return operateur;
@@ -108,9 +147,9 @@ public class Agent {
 	}
 
 
-	public void setAgentprofile(Agentprofile agentprofile) {
-		this.agentprofile = agentprofile;
-	}
+//	public void setAgentprofile(Agentprofile agentprofile) {
+//		this.agentprofile = agentprofile;
+//	}
 
 
 	public List<Operation> getOperations() {
@@ -189,9 +228,16 @@ public class Agent {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
-	public  Agent() {}
+
+	public int getMontant() {
+		return montant;
+	}
+
+	public void setMontant(int montant) {
+		this.montant = montant;
+	}
+
+
 	
 	@Override
     public boolean equals(Object o) {
@@ -210,7 +256,7 @@ public class Agent {
 	public String toString() {
 		return "Agent [idagent=" + idagent + ", firstname=" + firstname + ", lastname=" + lastname + ", numero="
 				+ numero + ", compte=" + compte + ", status=" + status + ", date=" + date + ", operateur=" + operateur
-				+ ", agentprofile=" + agentprofile  + ", managerid=" + managerid
+				//+ ", agentprofile=" + agentprofile  + ", managerid=" + managerid
 				+ ", subAgent=" + subAgent + "]";
 	}
 

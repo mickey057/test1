@@ -63,9 +63,10 @@
 				</div>
 
     <div class="container my-2">
-        <h1>Operation List</h1>
+        <h1>Operation List Test</h1>
         
-        <a th:href="@{/Operation/new}" class="btn btn-primary btn-sm mb-3"> Add Operation</a>
+        <a th:href="@{/Operation/new}" class="btn btn-primary btn-sm mb-3"> Add Operation for client</a>
+        <a th:href="@{/OperationAgent/new}" class="btn btn-primary btn-sm mb-3"> Add Operation for agent</a>
         
 
 
@@ -83,7 +84,7 @@
             <tbody>
                <tr th:each="operation : ${listOperations}">
                     <td th:text="${operation.agent.firstname}"></td>
-                    <td th:text="${operation.client.firstname}"></td>
+                    <td th:text="${operation.client != null ? operation.client.lastname : ''}"></td>
                     <td th:text="${operation.date}"></td>
                     <td th:text="${operation.montant}"></td>
                     <td th:text="${operation.type}"></td>

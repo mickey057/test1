@@ -66,6 +66,7 @@
         <h1>Agent List</h1>
         
         <a th:href="@{/Agent/new}" class="btn btn-primary btn-sm mb-3"> Add Agent </a>
+
         
 
 
@@ -95,7 +96,8 @@
                     <td th:text="${agent.operateur}"></td>
                   
                    <td> <a th:href="@{'/agent/update/' + ${agent.idagent}}" >Edit</a>
-                        <a th:href="@{'/agent/delete/' + ${agent.idagent}}" >Delete</a> 
+                        <a th:href="@{'/agent/delete/' + ${agent.idagent}}" >Delete</a>
+                       <a th:href="@{'/agent/operation/' + ${agent.idagent}}" >Operation</a>
                     </td>    
                 </tr>
             </tbody>

@@ -22,13 +22,13 @@ public class Confoper {
 	@Column(name = "commision_value")
 	private int commision_value;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name ="idagentprofileSd")
-	private Agentprofile agentprofilesd;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name ="idagentprofileRv")
-	private Agentprofile agentprofilerv;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name ="idagentprofileSd")
+//	private Agentprofile agentprofilesd;
+//
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name ="idagentprofileRv")
+//	private Agentprofile agentprofilerv;
 	
 	
 	public Confoper() {
@@ -42,21 +42,21 @@ public class Confoper {
 		this.commision_value = commision_value;
 	}
 	
-	public Agentprofile getAgentprofilesd() {
-		return agentprofilesd;
-	}
-
-	public void setAgentprofilesd(Agentprofile agentprofilesd) {
-		this.agentprofilesd = agentprofilesd;
-	}
-
-	public Agentprofile getAgentprofilerv() {
-		return agentprofilerv;
-	}
-
-	public void setAgentprofilerv(Agentprofile agentprofilerv) {
-		this.agentprofilerv = agentprofilerv;
-	}
+//	public Agentprofile getAgentprofilesd() {
+//		return agentprofilesd;
+//	}
+//
+//	public void setAgentprofilesd(Agentprofile agentprofilesd) {
+//		this.agentprofilesd = agentprofilesd;
+//	}
+//
+//	public Agentprofile getAgentprofilerv() {
+//		return agentprofilerv;
+//	}
+//
+//	public void setAgentprofilerv(Agentprofile agentprofilerv) {
+//		this.agentprofilerv = agentprofilerv;
+//	}
 
 	public Long getIdconf() {
 		return idconf;

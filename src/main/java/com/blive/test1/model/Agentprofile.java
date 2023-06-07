@@ -1,13 +1,7 @@
 package com.blive.test1.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Entity(name ="Agentprofile")
 @Table(name = "agent_profile")
 public class Agentprofile {
@@ -18,62 +12,54 @@ public class Agentprofile {
 	private Long idagentprofile;
 	
 	private String name;
-	private String	agent_profilecol;
+	private String	niveau;
  
-	@OneToOne(cascade =CascadeType.ALL, mappedBy = "agentprofile")
-	private Agent agent;
+//	@OneToOne
+//	@JoinColumn(name = "idagent")
+//	private Agent idagent;
 	
-	@OneToOne(cascade =CascadeType.ALL,mappedBy = "agentprofilesd")
-	private Confoper confoperS;
-	
-	@OneToOne(cascade =CascadeType.ALL,mappedBy = "agentprofilerv")
-	private Confoper confoperR;
+//	@OneToOne(cascade =CascadeType.ALL,mappedBy = "agentprofilesd")
+//	private Confoper confoperS;
+//
+//	@OneToOne(cascade =CascadeType.ALL,mappedBy = "agentprofilerv")
+//	private Confoper confoperR;
 	
 	public Agentprofile() {
 		super();
 	}
 
 
-	public Agentprofile(String name, String agent_profilecol) {
+	public Agentprofile(String name, String niveau) {
 		super();
 		this.name = name;
-		this.agent_profilecol = agent_profilecol;
+		this.niveau = niveau;
 	}
 	
 	
 
 	
-	public Confoper getConfoperS() {
-		return confoperS;
-	}
+//	public Confoper getConfoperS() {
+//		return confoperS;
+//	}
+//
+//
+//	public void setConfoperS(Confoper confoperS) {
+//		this.confoperS = confoperS;
+//	}
+//
+//
+//	public Confoper getConfoperR() {
+//		return confoperR;
+//	}
+//
+//
+//	public void setConfoperR(Confoper confoperR) {
+//		this.confoperR = confoperR;
+//	}
+//
 
 
-	public void setConfoperS(Confoper confoperS) {
-		this.confoperS = confoperS;
-	}
 
-
-	public Confoper getConfoperR() {
-		return confoperR;
-	}
-
-
-	public void setConfoperR(Confoper confoperR) {
-		this.confoperR = confoperR;
-	}
-
-
-	public Agent getAgent() {
-		return agent;
-	}
-
-
-	public void setAgent(Agent agent) {
-		this.agent = agent;
-	}
-
-
-	
 	public Long getIdagentprofile() {
 		return idagentprofile;
 	}
@@ -90,19 +76,22 @@ public class Agentprofile {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAgent_profilecol() {
-		return agent_profilecol;
+	public String getNiveau() {
+		return niveau;
 	}
-	public void setAgent_profilecol(String agent_profilecol) {
-		this.agent_profilecol = agent_profilecol;
+	public void setNiveau(String niveau) {
+		this.niveau = niveau;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Agentprofile [name=" + name + ", agent_profilecol=" + agent_profilecol + "]";
+		return "Agentprofile{" +
+				"idagentprofile=" + idagentprofile +
+				", name='" + name + '\'' +
+				", niveau='" + niveau + '\'' +
+//				", confoperS=" + confoperS +
+//				", confoperR=" + confoperR +
+				'}';
 	}
-
-	
-
 }

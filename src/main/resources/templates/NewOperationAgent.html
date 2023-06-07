@@ -12,29 +12,29 @@
 <div th:unless="${operation.id == null}" ><h1 class="text-center"> Operation Update</h1></div>
 <hr>
 <h2> Save Operation </h2>
-        <form action="#" th:action="@{/operation/save}" th:object="${operation}" method="POST">
+        <form action="#" th:action="@{/operation/agent/save}" th:object="${operation}" method="POST">
             <input type="hidden" th:field="*{id}" th:value="${operation.id}" class="form-control mb-4 col-4" required="required" />
             <input type="text" th:field="*{date}" placeholder="Date" class="form-control mb-4 col-4" required="required">
             <input type="text" th:field="*{montant}" placeholder="montant" class="form-control mb-4 col-4" required="required"> 
             <input type="text" th:field="*{type}" placeholder="type" class="form-control mb-4 col-4" required="required">
             <div class="form-group row">
             
-            <label  >Agent : </label>
+            <label  >Agent 1: </label>
             <select th:field="*{agent}" class="form-control mb-4 col-4" required >
             <th:block th:each="agent : ${listAgents}">
             <option th:text="${agent.firstname}" th:value="${agent.idagent}" />
             </th:block>
             </select>
-            
-           <label>Client : </label>
-           <select th:field="*{client}" class="form-control mb-4 col-4" required >
-            <th:block th:each="client : ${listClients}">
-            <option th:text="${client.firstname}" th:value="${client.idclient}" />
-            </th:block>
-            </select>
+
+                <label  >Agent 2: </label>
+                <select th:field="*{agent}" class="form-control mb-4 col-4" required >
+                    <th:block th:each="agent : ${listAgents}">
+                        <option th:text="${agent.firstname}" th:value="${agent.idagent}" />
+                    </th:block>
+                </select>
            
             </div>
-            <button type="submit" class="btn btn-info col-2"> Save Operation client</button>
+            <button type="submit" class="btn btn-info col-2"> Save Operation</button>
             </form>
 </div>
 
