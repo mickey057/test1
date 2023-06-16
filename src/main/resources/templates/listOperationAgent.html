@@ -1,106 +1,106 @@
-<!--<!DOCTYPE html>-->
-<!--<html  lang="en" xmlns:th="http://www.thymeleaf.org" >-->
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" >
 
-<!--<head>-->
-<!--    <meta charset="ISO-8859-1">-->
-<!--    <title>User Management System</title>-->
-<!-- -->
-<!--   &lt;!&ndash;  <link  href="webjars/bootstrap/4.0.0/css/bootstrap.min.js"  rel="stylesheet">-->
-<!--    <script type="text/javascript" src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script> &ndash;&gt;-->
-<!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  -->
-<!--   -->
-<!--</head>-->
+<head>
+    <meta charset="ISO-8859-1">
+    <title>User Management System</title>
 
-<!--<body>-->
+   <!--  <link  href="webjars/bootstrap/4.0.0/css/bootstrap.min.js"  rel="stylesheet">
+    <script type="text/javascript" src="webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-<!--<div id="page-content-wrapper">-->
-<!--		<div class="container-fluid" >-->
-<!--			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">-->
-<!--				<button class="btn btn-primary" id="menu-toggle">&#9776</button>-->
+</head>
 
-<!--					<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-<!--						<ul class="navbar-nav mr-auto">-->
-<!--							<li class="nav-item active">-->
-<!--								<a class="nav-link" href="#" >MENU 1 <span class="sr-only">(current)</span></a>-->
-<!--							</li>-->
-<!--							<li class="nav-item active">-->
-<!--								<a class="nav-link" href="#">MENU 2</a>-->
-<!--							</li>-->
-<!--						</ul>-->
-<!--						<div class="nav-item dropdown">-->
-<!--							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--								SETTING-->
-<!--							</a>-->
-<!--							<div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--								<a class="dropdown-item" href="#">Action</a>-->
-<!--								<a class="dropdown-item" href="#">Another action</a>-->
-<!--								<div class="dropdown-divider"></div>-->
-<!--								<a class="dropdown-item" href="#">Something else here</a>-->
-<!--							</div>-->
-<!--					</div>-->
-<!--					</div>-->
-<!--				</nav>-->
+<body>
 
-<!--			</div>-->
-<!--			&lt;!&ndash; End navbar &ndash;&gt;-->
+<div id="page-content-wrapper">
+		<div class="container-fluid" >
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<button class="btn btn-primary" id="menu-toggle">&#9776</button>
 
-<!--			&lt;!&ndash;    side bar &ndash;&gt;-->
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+								<a class="nav-link" href="#" >MENU 1 <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="#">MENU 2</a>
+							</li>
+						</ul>
+						<div class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								SETTING
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Another action</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Something else here</a>
+							</div>
+					</div>
+					</div>
+				</nav>
 
-<!--			<div class="d-flex" id="wrapper">-->
+			</div>
+			<!-- End navbar -->
 
-<!--				&lt;!&ndash; Sidebar &ndash;&gt;-->
+			<!--    side bar -->
 
-<!--				<div class="bg-light border-right" id="sidebar-wrapper">-->
-<!--					<div class="sidebar-heading">Profile Name </div>-->
-<!--					<div class="list-group list-group-flush">-->
-<!--						 <a th:href="@{/listUsers}" class="list-group-item list-group-item-action bg-light"> List of Users </a> -->
-<!--                         <a th:href="@{/viewModule}" class="list-group-item list-group-item-action bg-light"> list of Module</a>-->
-<!--                         <a th:href="@{/listOperateur}" class="list-group-item list-group-item-action bg-light"> List Operateur</a>-->
-<!--                         <a th:href="@{/listAgent}" class="list-group-item list-group-item-action bg-light"> List Agents</a>-->
-<!--						<a th:href="@{/listClient}" class="list-group-item list-group-item-action bg-light">List Client</a>-->
-<!--						<a th:href="@{/listOperation}" class="list-group-item list-group-item-action bg-light">list Operation</a>-->
-<!--					</div>-->
-<!--				</div>-->
+			<div class="d-flex" id="wrapper">
 
-<!--    <div class="container my-2">-->
-<!--        <h1>Operation List Test</h1>-->
-<!--        -->
+				<!-- Sidebar -->
+
+				<div class="bg-light border-right" id="sidebar-wrapper">
+					<div class="sidebar-heading">Profile Name </div>
+					<div class="list-group list-group-flush">
+						 <a th:href="@{/listUsers}" class="list-group-item list-group-item-action bg-light"> List of Users </a>
+                         <a th:href="@{/viewModule}" class="list-group-item list-group-item-action bg-light"> list of Module</a>
+                         <a th:href="@{/listOperateur}" class="list-group-item list-group-item-action bg-light"> List Operateur</a>
+                         <a th:href="@{/listAgent}" class="list-group-item list-group-item-action bg-light"> List Agents</a>
+						<a th:href="@{/listClient}" class="list-group-item list-group-item-action bg-light">List Client</a>
+						<a th:href="@{/listOperation}" class="list-group-item list-group-item-action bg-light">list Operation</a>
+					</div>
+				</div>
+
+    <div class="container my-2">
+        <h1>Operation List Test</h1>
+
 <!--        <a th:href="@{/Operation/new}" class="btn btn-primary btn-sm mb-3"> Add Operation for client</a>-->
-<!--        <a th:href="@{/OperationAgent/new}" class="btn btn-primary btn-sm mb-3"> Add Operation for agent</a>-->
-<!--        -->
+        <a th:href="@{/OperationAgent/new}" class="btn btn-primary btn-sm mb-3"> Add Operation for agent</a>
 
 
-<!--        <table border="1" class="table table-striped table-responsive-md">-->
-<!--            <thead>-->
-<!--                <tr>-->
-<!--                    <th>Agent</th>-->
-<!--                    <th>Client</th>-->
-<!--                    <th>Date</th>-->
-<!--                    <th>Montant</th>-->
-<!--                    <th>Type</th>   -->
-<!--                   <th>Action</th>-->
-<!--                </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--               <tr th:each="operation : ${listOperations}">-->
-<!--                    <td th:text="${operation.agent.firstname}"></td>-->
-<!--                    <td th:text="${operation.client.firstname}"></td>-->
-<!--                    <td th:text="${operation.date}"></td>-->
-<!--                    <td th:text="${operation.montant}"></td>-->
-<!--                    <td th:text="${operation.type}"></td>-->
-<!--                    <td> <a th:href="@{'/operation/update/' + ${operation.id}}" >Edit</a>-->
-<!--                         <a th:href="@{'/operation/delete/' + ${operation.id}}" >Delete</a> -->
-<!--                    </td>    -->
-<!--                </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--        <hr>-->
-<!--        <ul class="nav nav-pills ">-->
-<!--        -->
-<!--        </ul>-->
-<!--    </div>-->
-<!--    </div>-->
-<!--				</div>-->
-<!--</body>-->
 
-<!--</html>-->
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+                <tr>
+                    <th>Agent sender</th>
+                    <th>Agent receiver</th>
+                    <th>Date</th>
+                    <th>Montant</th>
+                    <th>Type</th>
+                   <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr th:each="operationAgent : ${listOperationsAgent}">
+                    <td th:text="${operationAgent.agent1 != null ? operationAgent.agent1.firstname : ''}"></td>
+                    <td th:text="${operationAgent.agent2 != null ? operationAgent.agent2.firstname: ''}"></td>
+                    <td th:text="${operationAgent.date}"></td>
+                    <td th:text="${operationAgent.montant}"></td>
+                    <td th:text="${operationAgent.type}"></td>
+                    <td> <a th:href="@{'/operation/update/' + ${operationAgent.id}}" >Edit</a>
+                         <a th:href="@{'/operation/delete/' + ${operationAgent.id}}" >Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <ul class="nav nav-pills ">
+
+        </ul>
+    </div>
+    </div>
+				</div>
+</body>
+
+</html>

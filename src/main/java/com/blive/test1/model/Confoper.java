@@ -35,8 +35,9 @@ public class Confoper {
 		super();
 	}
 
-	public Confoper(String name_conf_oper, int max_recharge_amount, int commision_value) {
+	public Confoper(Long idconf,String name_conf_oper, int max_recharge_amount, int commision_value) {
 		super();
+		this.idconf = idconf;
 		this.name_conf_oper = name_conf_oper;
 		this.max_recharge_amount = max_recharge_amount;
 		this.commision_value = commision_value;

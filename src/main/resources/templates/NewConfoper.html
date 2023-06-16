@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Reseau system Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <div th:if="${confoper.idconf == null}" ><h1 class="text-center"> Confoper Register</h1></div>
+  <div th:unless="${confoper.idconf == null}" ><h1 class="text-center"> Confoper Update</h1></div>
+  <hr>
+  <h2> Save Confoper</h2>
+  <form action="#" th:action="@{/confoper/save}" th:object="${confoper}" method="POST">
+    <input type="hidden" th:field="*{idconf}" th:value="${confoper.idconf}" />
+    <input type="text" th:field="*{name_conf_oper}" placeholder="name_conf_oper" class="form-control mb-4 col-4" required="required">
+    <input type="text" th:field="*{max_recharge_amount}" placeholder="max_recharge_amount" class="form-control mb-4 col-4" required="required">
+    <input type="text" th:field="*{commision_value}" placeholder="commision_value" class="form-control mb-4 col-4" required="required">
+
+    <div class="form-group row">
+
+
+    </div>
+    <button type="submit" class="btn btn-info col-2"> Save Confoper</button>
+  </form>
+</div>
+
+</body>
+</html>

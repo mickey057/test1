@@ -58,12 +58,16 @@ public class OperationAgentController {
 
 	public void purchaseCredit(Long buyerId, int amount){
 		Agent buyer = agentRepository.findById(buyerId).orElse(null);
-		Agent superiorAgent = buyer != null ? buyer.getManagerid() : null;
-		if (buyer != null && superiorAgent != null && amount <= buyer.getMontant()) {
+		//Agent superiorAgent = buyer != null ? buyer.getManagerid() : null;
+		Agent superiorAgent =  buyer.getManagerid();
+		if (buyer != null && superiorAgent != null && amount <= buyer.getMontant())
+		{
 			buyer.setMontant(buyer.getMontant() - amount);
 			buyer.setCompte(buyer.getCompte() + amount);
 			superiorAgent.setMontant(buyer.getMontant() + amount);
 			superiorAgent.setCompte(buyer.getCompte() - amount);
+			agentRepository.save(buyer);
+			agentRepository.save(superiorAgent);
 		}
 
 	}
@@ -86,9 +90,66 @@ public class OperationAgentController {
 
 		}
 	}
+	@GetMapping("/listOperationAgent")
+	public String viewOperationPage(Model model) {
+		List<OperationAgent> listOperationsAgent= operationAgentRepository.findAll() ;
+		model.addAttribute("listOperationsAgent", listOperationsAgent);
+
+		List<Agent> listAgents = agentRepository.findAll();
+		model.addAttribute("listAgents", listAgents);
+
+		return "listOperationAgent";
+	}
+	@GetMapping("/OperationAgent/new")
+	public String showNewOperationForm(Model model) {
+		// create model attribute to bind form data
+		OperationAgent operationAgent= new OperationAgent();
+		model.addAttribute("operationAgent", operationAgent);
+
+		List<Agent> listAgents = agentRepository.findAll();
+		model.addAttribute("listAgents", listAgents);
+
+		return "NewOperationAgent";
+
+	}
+
+	@PostMapping("/operationAgent/save")
+	public String saveOperationAgent(@ModelAttribute("operationAgent") OperationAgent operationAgent) {
+		// save user to database
+		System.out.println(operationAgent);
+		//int act;
+		Agent ag = operationAgent.getAgent2();
+		operationAgent.setAgent1(ag.getManagerid());
+		purchaseCredit(ag.getIdagent(),operationAgent.getMontant());
+//		int act = ag.getCompte()-operation.getMontant();
+//		int rech = cl.getCompte()+operation.getMontant();
+//		// int rechcompte = cl.getMontant()+operation.getMontant();
+//		ag.setCompte(act);
+//		cl.setCompte(rech);
+//		agentRepository.save(ag);
+//		clientRepository.save(cl);
+		operationAgentRepository.save(operationAgent);
+		return "redirect:/listOperationAgent";
+	}
+
+    @GetMapping("/operation/agent/update/{id}")
+    public String showFormForUpdateOperationAgent(@PathVariable(value = "id") Long id , Model model) {
+//            @GetMapping("/operation/update/?idagent={idagent}&idclient={idclient}")
+//    	    public String showFormForUpdateOperation(@RequestParam(value = "idagent") long idagent,@RequestParam(value = "idclient") long idclient, Model model) {
+
+        // get operateur from the service
+        OperationAgent operationAgent = operationAgentRepository.findById(id).get();
+        // set user as a model attribute to pre-populate the form
+        model.addAttribute("operationAgent", operationAgent);
+
+        List<Agent> listAgents = agentRepository.findAll();
+        model.addAttribute("listAgents", listAgents);
+
+        return "NewOperationAgent";
+    }
 
 	@PostMapping("/agent/operation/{idagent}")
-	public String TransfertCreditForm (@PathVariable(value = "idagent") Long buyerId, int amount, Model model)
+	public String TransfertCreditForm(@PathVariable(value = "idagent") Long buyerId, int amount, Model model)
 	{
 		// get Agent from the service
 		Agent agent= agentRepository.findById(buyerId).get();

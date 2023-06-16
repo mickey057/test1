@@ -76,7 +76,7 @@
                     <th>User ID</th>
                     <th>Agent firstname</th>
                     <th>Agent lastname</th>
-                    <th>Agent numero</th>
+                    <th>Agent montant</th>
                    <th>Agent compte</th>
                    <th>Agent status</th>
                    <th>Agent date</th>
@@ -89,7 +89,7 @@
                     <td th:text="${agent.idagent}"></td>
                     <td th:text="${agent.firstname}"></td>
                     <td th:text="${agent.lastname}"></td>
-                    <td th:text="${agent.numero}"></td>
+                    <td th:text="${agent.montant}"></td>
                     <td th:text="${agent.compte}"></td>
                     <td th:text="${agent.status}"></td>
                     <td th:text="${agent.date}"></td>
@@ -97,7 +97,7 @@
                   
                    <td> <a th:href="@{'/agent/update/' + ${agent.idagent}}" >Edit</a>
                         <a th:href="@{'/agent/delete/' + ${agent.idagent}}" >Delete</a>
-                       <a th:href="@{'/agent/operation/' + ${agent.idagent}}" >Operation</a>
+                       <a th:href="@{'/operation/agent/update/' + ${agent.idagent}}" >Operation</a>
                     </td>    
                 </tr>
             </tbody>

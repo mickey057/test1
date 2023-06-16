@@ -100,17 +100,7 @@ public class TheController {
 	        return "NewOperation";
         }
 
-		// for agent
-		@GetMapping("/OperationAgent/new")
-		public String showNewOperationAgentForm(Model model) {
-			// create model attribute to bind form data
-			Operation operation= new Operation();
-			model.addAttribute("operation", operation);
-			List<Agent> listAgents = agentRepository.findAll();
-			model.addAttribute("listAgents", listAgents);
 
-			return "NewOperationAgent";
-		}
         @PostMapping("/operateur/save")
         public String saveOperateur(@ModelAttribute("operateur") Operateur operateur) {
             // save user to database
@@ -150,23 +140,7 @@ public class TheController {
             return "redirect:/listOperation";
         }
 
-		//for operation from agent to agent
-		@PostMapping("/operation/agent/save")
-		public String saveOperationAgent(@ModelAttribute("operation") Operation operation) {
-			// save user to database
-			System.out.println(operation);
-			//int act;
-			Agent ag1 = operation.getAgent();
-			Agent ag2 = operation.getAgent();
-			int act = ag1.getCompte()-operation.getMontant();
-			int rech = ag2.getCompte()+operation.getMontant();
-			ag1.setCompte(act);
-			ag2.setCompte(rech);
-			agentRepository.save(ag1);
-			agentRepository.save(ag2);
-			operationRepository.save(operation);
-			return "redirect:/listOperationAgent";
-		}
+
         @GetMapping("/agent/update/{idagent}")
 	    public String showFormForUpdateAgent(@PathVariable(value = "idagent") long idagent, Model model) {
 
