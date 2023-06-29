@@ -79,6 +79,7 @@
                     <th>Agent montant</th>
                    <th>Agent compte</th>
                    <th>Agent status</th>
+                   <th>Agent superior</th>
                    <th>Agent date</th>
                    <th>Operateur name</th>
                    <th>Action</th>
@@ -92,6 +93,7 @@
                     <td th:text="${agent.montant}"></td>
                     <td th:text="${agent.compte}"></td>
                     <td th:text="${agent.status}"></td>
+                   <td th:text="${agent.managerid !=null ? agent.managerid.firstname : 'no superior' }"></td>
                     <td th:text="${agent.date}"></td>
                     <td th:text="${agent.operateur}"></td>
                   

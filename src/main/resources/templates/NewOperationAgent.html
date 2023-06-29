@@ -14,7 +14,7 @@
 <h2> Save Operation </h2>
         <form action="#" th:action="@{/operationAgent/save}" th:object="${operationAgent}" method="POST">
             <input type="hidden" th:field="*{id}" th:value="${operationAgent.id}" class="form-control mb-4 col-4" required="required" />
-            <input type="text" th:field="*{date}" placeholder="Date" class="form-control mb-4 col-4" required="required">
+            <input type="text" th:field="*{date}" th:value="${#temporals.format(localDate, 'yyyy-MM-dd')}"  class="form-control mb-4 col-4" required="required">
             <input type="text" th:field="*{montant}" placeholder="montant" class="form-control mb-4 col-4" required="required"> 
             <input type="text" th:field="*{type}" placeholder="type" class="form-control mb-4 col-4" required="required">
             <div class="form-group row">

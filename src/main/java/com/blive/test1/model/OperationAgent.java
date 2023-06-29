@@ -3,6 +3,11 @@ package com.blive.test1.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.swing.text.DateFormatter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 
@@ -16,9 +21,14 @@ public class OperationAgent {
 
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
+	//@Column(name = "date")
 	private Date date;
+
 	private int montant;
 	private String type;
+//	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//	public DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//	public LocalDateTime now = LocalDateTime.now();
 
 	@ManyToOne
     @JoinColumn(name = "idsender")
@@ -27,6 +37,22 @@ public class OperationAgent {
 	@ManyToOne
 	@JoinColumn(name = "idreceiver")
 	private Agent agent2;
+
+
+	@Transient
+	public String showSystemDates() {
+
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		String date = dtf.format(now).toString();
+		System.out.println("Date: " + date);
+		return date;
+	}
+//	@Transient
+//	public Date getSystemDates() {
+//		LocalDateTime now = LocalDateTime.now();
+//		return Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
+//	}
 
 
 
@@ -54,8 +80,22 @@ public class OperationAgent {
 		this.agent1 = agent1;
 		this.agent2 = agent2;
 	}
-	
 
+//	public DateTimeFormatter getDtf() {
+//		return dtf;
+//	}
+//
+//	public void setDtf(DateTimeFormatter dtf) {
+//		this.dtf = dtf;
+//	}
+//
+//	public LocalDateTime getNow() {
+//		return now;
+//	}
+//
+//	public void setNow(LocalDateTime now) {
+//		this.now = now;
+//	}
 
 	public Long getId() {
 		return id;

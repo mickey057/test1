@@ -62,10 +62,21 @@ public class OperationAgentController {
 		Agent superiorAgent =  buyer.getManagerid();
 		if (buyer != null && superiorAgent != null && amount <= buyer.getMontant())
 		{
+			System.out.println("the actual amount of operation :" + amount);
+			System.out.println("the actual agent :" + buyer.getFirstname());
+			System.out.println("the actual amount of agent :" + buyer.getMontant());
+			System.out.println("the actual compte of operation :" + buyer.getCompte());
 			buyer.setMontant(buyer.getMontant() - amount);
+			System.out.println("the actual New Amount of Agent :" + buyer.getMontant());
 			buyer.setCompte(buyer.getCompte() + amount);
-			superiorAgent.setMontant(buyer.getMontant() + amount);
-			superiorAgent.setCompte(buyer.getCompte() - amount);
+			System.out.println("the actual New Compte of Agent :" + buyer.getCompte());
+			System.out.println("the superiror Agent :" + superiorAgent.getFirstname());
+			System.out.println("His actual amount of superiorAgent:" + superiorAgent.getMontant());
+			System.out.println("His actual compte of superiorAgent:" + superiorAgent.getCompte());
+			superiorAgent.setMontant(superiorAgent.getMontant() + amount);
+			System.out.println("His New amount of superiorAgent:" + superiorAgent.getMontant());
+			superiorAgent.setCompte(superiorAgent.getCompte() - amount);
+			System.out.println("His new compte of superiorAgent:" + superiorAgent.getCompte());
 			agentRepository.save(buyer);
 			agentRepository.save(superiorAgent);
 		}
@@ -106,6 +117,7 @@ public class OperationAgentController {
 		OperationAgent operationAgent= new OperationAgent();
 		model.addAttribute("operationAgent", operationAgent);
 
+
 		List<Agent> listAgents = agentRepository.findAll();
 		model.addAttribute("listAgents", listAgents);
 
@@ -138,7 +150,8 @@ public class OperationAgentController {
 //    	    public String showFormForUpdateOperation(@RequestParam(value = "idagent") long idagent,@RequestParam(value = "idclient") long idclient, Model model) {
 
         // get operateur from the service
-        OperationAgent operationAgent = operationAgentRepository.findById(id).get();
+		OperationAgent operationAgent = new OperationAgent();
+        operationAgent = operationAgentRepository.findById(id).get();
         // set user as a model attribute to pre-populate the form
         model.addAttribute("operationAgent", operationAgent);
 
